@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Happy Birthday Mom!</title>
+  <meta charset="UTF-8">
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const pages = document.querySelectorAll(".page");
+      function showPage(id) {
+        pages.forEach(p => p.style.display = "none");
+        document.getElementById(id).style.display = "block";
+      }
+      window.showPage = showPage;
+      showPage("map");
+
+      // Floating balloons animation
+      function floatBalloons() {
+        for (let i = 0; i < 8; i++) {
+          const b = document.createElement("div");
+          b.innerHTML = ["🎈","🎊","✨"][Math.floor(Math.random()*3)];
+          b.style.position = "absolute";
+          b.style.left = Math.random() * window.innerWidth + "px";
+          b.style.top = window.innerHeight + "px";
+          b.style.fontSize = 30 + Math.random() * 40 + "px";
+          b.style.opacity = 0.8;
+          document.body.appendChild(b);
+          let y = parseInt(b.style.top);
+          let interval = setInterval(() => {
+            y -= 2;
+            b.style.top = y + "px";
+            if (y < -50) {
+              clearInterval(interval);
+              b.remove();
+            }
+          }, 50);
+        }
+      }
+      setInterval(floatBalloons, 3000);
+    });
+  </script>
+</head>
+<body style="margin:0;font-family:'Papyrus', cursive;text-align:center;background:linear-gradient(#fdf6e3,#f8ecc2,#fdf6e3);overflow-x:hidden;">
+  <div id="map" class="page">
+    <h1 style="padding:20px;font-size:50px;color:#5a341c;text-shadow:3px 3px #f1c27d;">🌍 Mom’s Birthday Adventure Map 🌸</h1>
+    <p style="font-size:22px;color:#3b2414;">Navigate the map to unlock surprises made with love ❤️</p>
+
+    <!-- Map Container -->
+    <div style="position:relative;width:90%;height:550px;margin:20px auto;background:#fffbe6;border:6px double #b8860b;border-radius:25px;box-shadow:inset 0 0 60px #d2b48c;">
+      <svg viewBox="0 0 800 550" style="position:absolute;width:100%;height:100%;">
+        <path d="M80 500 C200 400, 300 450, 400 350 S600 250, 720 120" stroke="#8b5a2b" stroke-width="6" fill="none" stroke-dasharray="20,12"/>
+      </svg>
+      <div style="position:absolute;right:20px;bottom:20px;font-size:50px;animation:spin 20s linear infinite;">🧭</div>
+
+      <div onclick="showPage('photos')" style="position:absolute;left:60px;top:380px;cursor:pointer;text-align:center;">
+        <div style="background:#fff;border:4px solid #8b5a2b;border-radius:50%;padding:30px;box-shadow:0 0 25px #ff69b4;font-size:40px;transition:transform 0.3s, box-shadow 0.3s;">📷</div>
+        <p style="margin-top:8px;font-weight:bold;color:#4b2e1e;font-size:18px;">Photos</p>
+      </div>
+
+      <div onclick="showPage('timeline')" style="position:absolute;left:350px;top:250px;cursor:pointer;text-align:center;">
+        <div style="background:#fff;border:4px solid #8b5a2b;border-radius:50%;padding:30px;box-shadow:0 0 25px #ffd700;font-size:40px;transition:transform 0.3s, box-shadow 0.3s;">🕒</div>
+        <p style="margin-top:8px;font-weight:bold;color:#4b2e1e;font-size:18px;">Timeline</p>
+      </div>
+
+      <div onclick="showPage('video')" style="position:absolute;left:670px;top:80px;cursor:pointer;text-align:center;">
+        <div style="background:#fff;border:4px solid #8b5a2b;border-radius:50%;padding:30px;box-shadow:0 0 25px #87cefa;font-size:40px;transition:transform 0.3s, box-shadow 0.3s;">🎥</div>
+        <p style="margin-top:8px;font-weight:bold;color:#4b2e1e;font-size:18px;">Video</p>
+      </div>
+    </div>
+  </div>
+
+<div id="photos" class="page" style="display:none;">
+  <h2 style="color:#5a341c;font-size:36px;">Our Memories Together 💕</h2>
+  <!-- Fixed Imgur image links -->
+  <img src="https://i.imgur.com/OFlWKNl.jpg" width="600" style="margin:20px;border-radius:20px;box-shadow:0 0 30px #ff69b4;">
+  <img src="https://i.imgur.com/sfRUFgZ.jpg" width="600" style="margin:20px;border-radius:20px;box-shadow:0 0 30px #87cefa;">
+  <img src="https://i.imgur.com/g5i93OQ.jpg" width="600" style="margin:20px;border-radius:20px;box-shadow:0 0 30px #ffd700;">
+  <br><br>
+  <button onclick="showPage('map')" style="padding:12px 25px;border:none;border-radius:12px;background:#f1c27d;box-shadow:0 0 12px #444;cursor:pointer;font-size:18px;">⬅ Back to Map</button>
+</div>
+
+  <div id="timeline" class="page" style="display:none;">
+    <h2 style="color:#5a341c;font-size:36px;">Life Timeline 🎂</h2>
+    <div style="position:relative;width:90%;height:150px;margin:40px auto;">
+      <!-- Timeline bar -->
+      <div style="position:absolute;top:70px;left:0;width:100%;height:10px;background:#d2b48c;border-radius:5px;"></div>
+      <!-- Age markers and text -->
+      <div style="position:absolute;top:30px;left:0%;text-align:center;width:14%;">👶 ბავშობა</div>
+      <div style="position:absolute;top:30px;left:14%;text-align:center;width:14%;">🌱 თინეიჯერობა</div>
+      <div style="position:absolute;top:30px;left:28%;text-align:center;width:14%;">🌸 მამასთან ქორწილი, თოკო და თაია👶 </div>
+      <div style="position:absolute;top:30px;left:42%;text-align:center;width:14%;">🌼 ყველაზე მაგარი დედად გახდომა</div>
+      <div style="position:absolute;top:30px;left:56%;text-align:center;width:14%;">🌹 ყველაზე ლამაზი დედა მსოფლიოში</div>
+      <!-- Age numbers under -->
+      <div style="position:absolute;top:90px;left:0%;width:14%;text-align:center;font-size:16px;">0–10</div>
+      <div style="position:absolute;top:90px;left:14%;width:14%;text-align:center;font-size:16px;">10–20</div>
+      <div style="position:absolute;top:90px;left:28%;width:14%;text-align:center;font-size:16px;">20–30</div>
+      <div style="position:absolute;top:90px;left:42%;width:14%;text-align:center;font-size:16px;">30–40</div>
+      <div style="position:absolute;top:90px;left:56%;width:14%;text-align:center;font-size:16px;">40–50</div>
+    </div>
+    <button onclick="showPage('map')" style="padding:12px 25px;border:none;border-radius:12px;background:#f1c27d;box-shadow:0 0 12px #444;cursor:pointer;font-size:18px;">⬅ Back to Map</button>
+  </div>
+
+<div id="video" class="page" style="display:none;">
+  <h2 style="color:#5a341c;font-size:36px;">A Special Video 🎬</h2>
+  <!-- Replace VIDEO_ID with your actual YouTube video ID, e.g. dQw4w9WgXcQ -->
+  <iframe width="800" height="450" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video" frameborder="0" allowfullscreen style="border-radius:25px;box-shadow:0 0 30px #444;"></iframe>
+  <br><br>
+  <button onclick="showPage('map')" style="padding:12px 25px;border:none;border-radius:12px;background:#f1c27d;box-shadow:0 0 12px #444;cursor:pointer;font-size:18px;">⬅ Back to Map</button>
+</div>
+
+  <style>
+    [onclick] div:hover {
+      transform: scale(1.2);
+      box-shadow:0 0 45px #ff1493;
+    }
+    @keyframes spin {
+      from {transform:rotate(0deg);} to {transform:rotate(360deg);}
+    }
+  </style>
+</body>
+</html>
